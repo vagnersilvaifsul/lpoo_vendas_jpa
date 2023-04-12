@@ -1195,216 +1195,219 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     <schema id="336" parent="1" name="tads_aulas">
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
-    <schema id="337" parent="1" name="teste_sgbd">
+    <schema id="337" parent="1" name="tads_b">
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
-    <schema id="338" parent="1" name="vendas">
+    <schema id="338" parent="1" name="teste_sgbd">
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
-    <user id="339" parent="1" name="&apos;&apos;">
+    <schema id="339" parent="1" name="vendas">
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </schema>
+    <user id="340" parent="1" name="&apos;&apos;">
       <Host>localhost</Host>
     </user>
-    <user id="340" parent="1" name="mariadb.sys">
+    <user id="341" parent="1" name="mariadb.sys">
       <Host>localhost</Host>
     </user>
-    <user id="341" parent="1" name="mariadb">
+    <user id="342" parent="1" name="mariadb">
       <Host>localhost</Host>
     </user>
-    <user id="342" parent="1" name="pma">
+    <user id="343" parent="1" name="pma">
       <Host>localhost</Host>
-    </user>
-    <user id="343" parent="1" name="root">
-      <Host>127.0.0.1</Host>
     </user>
     <user id="344" parent="1" name="root">
-      <Host>::1</Host>
+      <Host>127.0.0.1</Host>
     </user>
     <user id="345" parent="1" name="root">
+      <Host>::1</Host>
+    </user>
+    <user id="346" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="346" parent="329" name="clientes">
+    <table id="347" parent="329" name="clientes">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="347" parent="329" name="itens">
+    <table id="348" parent="329" name="itens">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="348" parent="329" name="pedidos">
+    <table id="349" parent="329" name="pedidos">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="349" parent="329" name="produtos">
+    <table id="350" parent="329" name="produtos">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <column id="350" parent="346" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="351" parent="347" name="id">
+      <AutoIncrement>5</AutoIncrement>
       <DasType>bigint(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="351" parent="346" name="nome">
+    <column id="352" parent="347" name="nome">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="352" parent="346" name="situacao">
+    <column id="353" parent="347" name="situacao">
       <DasType>bit(1)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="353" parent="346" name="sobrenome">
+    <column id="354" parent="347" name="sobrenome">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <index id="354" parent="346" name="PRIMARY">
+    <index id="355" parent="347" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="355" parent="346" name="PRIMARY">
+    <key id="356" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="356" parent="347" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="357" parent="348" name="id">
+      <AutoIncrement>46</AutoIncrement>
       <DasType>bigint(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="357" parent="347" name="quantidade">
+    <column id="358" parent="348" name="quantidade">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="358" parent="347" name="situacao">
+    <column id="359" parent="348" name="situacao">
       <DasType>bit(1)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="359" parent="347" name="totalItem">
+    <column id="360" parent="348" name="totalItem">
       <DasType>double|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="360" parent="347" name="pedido_id">
+    <column id="361" parent="348" name="pedido_id">
       <DasType>bigint(20)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="361" parent="347" name="produto_id">
+    <column id="362" parent="348" name="produto_id">
       <DasType>bigint(20)|0s</DasType>
       <Position>6</Position>
     </column>
-    <foreign-key id="362" parent="347" name="FKdxsx2902y778v5yy9d8dkjn6n">
+    <foreign-key id="363" parent="348" name="FKdxsx2902y778v5yy9d8dkjn6n">
       <ColNames>pedido_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>pedidos</RefTableName>
     </foreign-key>
-    <foreign-key id="363" parent="347" name="FKr016ru8uflu796o6kx0igbnxj">
+    <foreign-key id="364" parent="348" name="FKr016ru8uflu796o6kx0igbnxj">
       <ColNames>produto_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>produtos</RefTableName>
     </foreign-key>
-    <index id="364" parent="347" name="PRIMARY">
+    <index id="365" parent="348" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="365" parent="347" name="FKdxsx2902y778v5yy9d8dkjn6n">
+    <index id="366" parent="348" name="FKdxsx2902y778v5yy9d8dkjn6n">
       <ColNames>pedido_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="366" parent="347" name="FKr016ru8uflu796o6kx0igbnxj">
+    <index id="367" parent="348" name="FKr016ru8uflu796o6kx0igbnxj">
       <ColNames>produto_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="367" parent="347" name="PRIMARY">
+    <key id="368" parent="348" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="368" parent="348" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="369" parent="349" name="id">
+      <AutoIncrement>33</AutoIncrement>
       <DasType>bigint(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="369" parent="348" name="dataCriacao">
+    <column id="370" parent="349" name="dataCriacao">
       <DasType>date|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="370" parent="348" name="dataModificacao">
+    <column id="371" parent="349" name="dataModificacao">
       <DasType>date|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="371" parent="348" name="estado">
+    <column id="372" parent="349" name="estado">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="372" parent="348" name="formaPagamento">
+    <column id="373" parent="349" name="formaPagamento">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="373" parent="348" name="situacao">
+    <column id="374" parent="349" name="situacao">
       <DasType>bit(1)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="374" parent="348" name="totalPedido">
+    <column id="375" parent="349" name="totalPedido">
       <DasType>double|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="375" parent="348" name="cliente_id">
+    <column id="376" parent="349" name="cliente_id">
       <DasType>bigint(20)|0s</DasType>
       <Position>8</Position>
     </column>
-    <foreign-key id="376" parent="348" name="FKg7202lk0hwxn04bmdl2thth5b">
+    <foreign-key id="377" parent="349" name="FKg7202lk0hwxn04bmdl2thth5b">
       <ColNames>cliente_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>clientes</RefTableName>
     </foreign-key>
-    <index id="377" parent="348" name="PRIMARY">
+    <index id="378" parent="349" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="378" parent="348" name="FKg7202lk0hwxn04bmdl2thth5b">
+    <index id="379" parent="349" name="FKg7202lk0hwxn04bmdl2thth5b">
       <ColNames>cliente_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="379" parent="348" name="PRIMARY">
+    <key id="380" parent="349" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="380" parent="349" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="381" parent="350" name="id">
+      <AutoIncrement>3</AutoIncrement>
       <DasType>bigint(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="381" parent="349" name="descricao">
+    <column id="382" parent="350" name="descricao">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="382" parent="349" name="estoque">
+    <column id="383" parent="350" name="estoque">
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="383" parent="349" name="nome">
+    <column id="384" parent="350" name="nome">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="384" parent="349" name="situacao">
+    <column id="385" parent="350" name="situacao">
       <DasType>bit(1)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="385" parent="349" name="valor">
+    <column id="386" parent="350" name="valor">
       <DasType>double|0s</DasType>
       <Position>6</Position>
     </column>
-    <index id="386" parent="349" name="PRIMARY">
+    <index id="387" parent="350" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="387" parent="349" name="PRIMARY">
+    <key id="388" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

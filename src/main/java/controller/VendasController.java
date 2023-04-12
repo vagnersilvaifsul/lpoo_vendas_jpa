@@ -1,23 +1,27 @@
-package control;
+package controller;
 
+import dao.DAO;
 import model.Cliente;
 import model.Item;
 import model.Pedido;
 import model.Produto;
 
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import dao.ClienteDAO;
-import dao.PedidoDAO;
-import dao.ProdutoDAO;
 
 public class VendasController {
 	
 	private static final Scanner input = new Scanner(System.in);
     private static double totalPedido;
+
+    private static final DAO<Cliente> daoCliente = new DAO<>(Cliente.class);
+    private static final DAO<Produto> daoProduto = new DAO<>(Produto.class);
+
+    private static final DAO<Pedido> daoPedido = new DAO<>(Pedido.class);
+    private static final DAO<Item> daoItem = new DAO<>(Item.class);
 
     public static void main(String[] args) {
         int opcao;
@@ -30,7 +34,7 @@ public class VendasController {
             System.out.print("Digite o código do cliente: ");
             long codigoCliente = input.nextLong();
             input.nextLine();
-            cliente = ClienteDAO.selectClienteById(codigoCliente);
+            cliente = daoCliente.selectById(codigoCliente);
             if(cliente == null){
                 System.out.println("Código inválido");
                 opcao = 1;
@@ -41,7 +45,7 @@ public class VendasController {
                     System.out.print("Digite o código do produto: ");
                     long codigoProduto = input.nextLong();
                     input.nextLine();
-                    produto = ProdutoDAO.selectProdutoById(codigoProduto);
+                    produto = daoProduto.selectById(codigoProduto);
                     if(produto == null){
                         System.out.println("Código inválido");
                         sair = 1;
@@ -98,13 +102,20 @@ public class VendasController {
                     input.nextLine();
                     if(opcao == 1){
                         //salva o pedido
-                        Pedido pedido = new Pedido(itens);
-                        pedido.setFormaPagamento("a vista");
-                        pedido.setEstado("aberto");
-                        pedido.setCliente(cliente);
-                        pedido.setTotalPedido(totalPedido);
-                        if(PedidoDAO.insertPedido(pedido)){
+                        Pedido pedido = new Pedido(null, "visa débito", "aberto", LocalDate.now(), LocalDate.now(), totalPedido, true, cliente, null);
+                        if(daoPedido.begin()
+                            .create(pedido)
+                            .commit()){
                             System.out.println("Pedido salvo.");
+                            System.out.println(pedido.getId());
+                            if(pedido.getId() != null) {
+                                itens.forEach(i -> {
+                                    i.setPedido(pedido);
+                                    daoItem.begin()
+                                        .create(i)
+                                        .commit();
+                                });
+                            }
                         }else{
                             System.out.println("Não foi possível salvar o pedido. Por favor, contate o administrador.");
                         }
@@ -129,12 +140,14 @@ public class VendasController {
     private static void baixarEstoque(Item item){
         Produto produto = item.getProduto();
         produto.setEstoque(produto.getEstoque() - item.getQuantidade());
-        ProdutoDAO.updateProduto(produto);
+        //TODO: implementar a baixa do estoque
+        //ProdutoDAO.updateProduto(produto);
     }
 
     private static void voltarEstoque(Item item){
         Produto produto = item.getProduto();
         produto.setEstoque(produto.getEstoque() + item.getQuantidade());
-        ProdutoDAO.updateProduto(produto);
+        //TODO: implementar o rollback do estoque
+        //ProdutoDAO.updateProduto(produto);
     }
 }

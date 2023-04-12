@@ -1,14 +1,16 @@
-package control;
+package controller;
 
+import dao.DAO;
+import model.Produto;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import dao.ProdutoDAO;
-import model.Produto;
 
 public class ProdutoController {
 
 	private static final Scanner input = new Scanner(System.in);
+    private static final DAO<Produto> daoProduto = new DAO<>(Produto.class);
 
 	public static void main(String[] args) {
 		
@@ -65,7 +67,9 @@ public class ProdutoController {
         produto.setEstoque(input.nextInt());
         input.nextLine(); //limpa o input
         produto.setSituacao(true);
-        if(ProdutoDAO.insertProduto(produto)) {
+        if(daoProduto.begin()
+            .create(produto)
+            .commit()) {
         	System.out.println("\nProduto salvo com sucesso.");
         }else {
         	System.out.println("\nHouve um erro ao salvar o produto. Por favor, contate o administrador do sistema.");
@@ -84,7 +88,7 @@ public class ProdutoController {
             if(codigo == 0) {
             	opcao = 0;
             } else {
-                produto = ProdutoDAO.selectProdutoById(codigo);
+                produto = daoProduto.selectById(codigo);
                 if(produto == null){
                     System.out.println("Código inválido.");
                 }else{
@@ -119,11 +123,12 @@ public class ProdutoController {
                         input.nextLine();
                     }
                     produto.setSituacao(true);
-                    if(ProdutoDAO.updateProduto(produto)){
-                        System.out.println("produto salvo:" + produto);
-                    }else{
-                        System.out.println("Erro ao tentar salvar o produto. Por favor, contate o adminstrador.");
-                    }
+                    //TODO: implementar esse update
+//                    if(ProdutoDAO.updateProduto(produto)){
+//                        System.out.println("produto salvo:" + produto);
+//                    }else{
+//                        System.out.println("Erro ao tentar salvar o produto. Por favor, contate o adminstrador.");
+//                    }
                     opcao = 1;
                 }
 
@@ -133,13 +138,13 @@ public class ProdutoController {
 	
 	//opção 3
 	private static void selectProdutos() {
-		System.out.println("\nLista de produtos cadastrados no banco de dados:\n" + ProdutoDAO.selectProdutos());
+		System.out.println("\nLista de produtos cadastrados no banco de dados:\n" + daoProduto.selectAll());
 	}
 	
 	//opção 4
 	private static void selectProdutosById() {
 		System.out.print("\nDigite o código do produto: ");
-        Produto produto = ProdutoDAO.selectProdutoById(input.nextLong());
+        Produto produto = daoProduto.selectById(input.nextLong());
         input.nextLine();
         if(produto != null){
             System.out.println(produto);
@@ -153,7 +158,8 @@ public class ProdutoController {
         System.out.print("Digite o nome do produto: ");
         String nome = input.next();
         System.out.println("Chave de pesquisa: " + nome);
-        List<Produto> produtos = ProdutoDAO.selectProdutosByName(nome);
+        //TODO: implementar esse select
+        List<Produto> produtos = new ArrayList<>(); //daoProduto.selectProdutosByName(nome);
         if(produtos.isEmpty()){
             System.out.println("Não há registros correspondentes para: " + nome);
         }else{
@@ -169,11 +175,13 @@ public class ProdutoController {
         List<Produto> produtos;
         switch(situacao) {
         	case 0:
-        		produtos = ProdutoDAO.selectProdutosBySituacao(false);
+                //TODO: implementar isso
+        		produtos = new ArrayList<>(); //ProdutoDAO.selectProdutosBySituacao(false);
         		System.out.println("Produtos na situação INATIVO:\n " + produtos);
         		break;
         	case 1:
-        		produtos = ProdutoDAO.selectProdutosBySituacao(true);
+                //TODO: implementar isso
+        		produtos = new ArrayList<>();//ProdutoDAO.selectProdutosBySituacao(true);
         		System.out.println("Produtos na situação ATIVO:\n " + produtos);
         		break;	
         }

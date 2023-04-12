@@ -1,6 +1,8 @@
 package model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -8,7 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
+@NamedQueries({
+	@NamedQuery(name="Pedido.buscarTodos", query="select p from Pedido p")
+})
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +28,8 @@ public class Pedido {
 	private Boolean situacao;
 	@ManyToOne
 	private Cliente cliente;
+	@OneToMany
+	@JoinColumn(name="pedido_id", referencedColumnName="id")
+	List<Item> itens;
 	
 }

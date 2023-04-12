@@ -1,16 +1,18 @@
-package control;
+package controller;
+
+import dao.DAO;
+import model.Cliente;
+import model.Pedido;
+import model.Produto;
 
 import java.util.List;
 import java.util.Scanner;
 
-import dao.ClienteDAO;
-import dao.PedidoDAO;
-import model.Cliente;
-import model.Pedido;
-
 public class PedidoController {
 	
 	private static final Scanner input = new Scanner(System.in);
+    private static final DAO<Cliente> daoCliente = new DAO<>(Cliente.class);
+    private static final DAO<Pedido> daoPedido = new DAO<>(Pedido.class);
 	
     public static void main(String[] args) {
         int opcao = 0;
@@ -62,12 +64,12 @@ public class PedidoController {
     	System.out.print("Digite o código do cliente: ");
         long id = input.nextLong();
         input.nextLine();
-        Cliente cliente = ClienteDAO.selectClienteById(id);
+        Cliente cliente = daoCliente.selectById(id);
         if(cliente == null) {
         	System.out.println("Codigo inexistente.");
         }else {
         	System.out.println("\nCliente Pesquisado: " + cliente);
-        	List<Pedido> pedidos = PedidoDAO.selectPedidosByIdCliente(cliente.getId());
+        	List<Pedido> pedidos = daoPedido.selectPedidosByCliente(cliente.getId());
         	if(pedidos.isEmpty()) {
         		System.out.println("Não há pedidos para cliente " + cliente.getNome());
         	}else {

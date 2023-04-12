@@ -1,10 +1,19 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.text.NumberFormat;
 
 @Entity
 @Table(name = "produtos")
+@NamedQueries({
+	@NamedQuery(name="Produto.buscarTodos", query="select p from Produto p")
+})
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,14 +1,16 @@
-package control;
+package controller;
 
+import dao.DAO;
+import model.Cliente;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import dao.ClienteDAO;
-import model.Cliente;
 
 public class ClienteController {
 	
 	private static final Scanner input = new Scanner(System.in);
+	private static final DAO<Cliente> daoCliente = new DAO<>(Cliente.class);
 
 	public static void main(String[] args) {
 
@@ -62,7 +64,9 @@ public class ClienteController {
         cliente.setSobrenome(input.nextLine());
         cliente.setSituacao(true);
         
-        if(ClienteDAO.insertCliente(cliente)) {
+        if(daoCliente.begin()
+			.create(cliente)
+			.commit()) {
         	System.out.println("\nCliente salvo com sucesso.");
         }else {
         	System.out.println("\nHouve um erro ao salvar o cliente. Por favor, contate o administrador do sistema.");
@@ -81,7 +85,7 @@ public class ClienteController {
             if(codigo == 0) {
             	opcao = 0;
             } else {
-                cliente = ClienteDAO.selectClienteById(codigo);
+                cliente = daoCliente.selectById(codigo);
                 if(cliente == null){
                     System.out.println("Código inválido.");
                 }else{
@@ -100,11 +104,12 @@ public class ClienteController {
                         cliente.setSobrenome(input.next());
                     }
                     cliente.setSituacao(true);
-                    if(ClienteDAO.updateCliente(cliente)){
-                        System.out.println("cliente salvo:" + cliente);
-                    }else{
-                        System.out.println("Erro ao tentar salvar o cliente. Por favor, contate o adminstrador.");
-                    }
+					//TODO: implementar esse update
+//                    if(ClienteDAO.updateCliente(cliente)){
+//                        System.out.println("cliente salvo:" + cliente);
+//                    }else{
+//                        System.out.println("Erro ao tentar salvar o cliente. Por favor, contate o adminstrador.");
+//                    }
                     opcao = 1;
                 }
 
@@ -114,13 +119,13 @@ public class ClienteController {
 	
 	//opção 3
 	private static void selectClientes() {
-		System.out.println("\nLista de clientes cadastrados no banco de dados:\n" + ClienteDAO.selectClientes());
+		System.out.println("\nLista de clientes cadastrados no banco de dados:\n" + daoCliente.selectAll());
 	}
 	
 	//opção 4
 	private static void selectClientesById() {
 		System.out.print("\nDigite o código do cliente: ");
-        Cliente cliente = ClienteDAO.selectClienteById(input.nextLong());
+        Cliente cliente = daoCliente.selectById(input.nextLong());
         input.nextLine();
         if(cliente != null){
             System.out.println(cliente);
@@ -134,7 +139,8 @@ public class ClienteController {
         System.out.print("Digite o nome do cliente: ");
         String nome = input.next();
         System.out.println("Chave de pesquisa: " + nome);
-        List<Cliente> clientes = ClienteDAO.selectClientesByName(nome);
+		//TODO: implementar esse select
+        List<Cliente> clientes = new ArrayList<>();//ClienteDAO.selectClientesByName(nome);
         if(clientes.isEmpty()){
             System.out.println("Não há registros correspondentes para: " + nome);
         }else{
@@ -150,11 +156,12 @@ public class ClienteController {
         List<Cliente> clientes;
         switch(situacao) {
         	case 0:
-        		clientes = ClienteDAO.selectClientesBySituacao(false);
+				//TODO: implementar esse select
+        		clientes = new ArrayList<>(); //ClienteDAO.selectClientesBySituacao(false);
         		System.out.println("Clientes na situação INATIVO:\n " + clientes);
         		break;
         	case 1:
-        		clientes = ClienteDAO.selectClientesBySituacao(true);
+        		clientes = new ArrayList<>(); //ClienteDAO.selectClientesBySituacao(true);
         		System.out.println("Clientes na situação ATIVO:\n " + clientes);
         		break;	
         }

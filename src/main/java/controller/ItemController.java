@@ -1,13 +1,15 @@
-package control;
+package controller;
 
+import dao.DAO;
+import model.Item;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.ItemDAO;
-import model.Item;
-
 public class ItemController {
 	private static final Scanner input = new Scanner(System.in);
+	private static final DAO<Item> daoItem = new DAO<>(Item.class);
 
 	public static void main(String[] args) {
 
@@ -34,7 +36,8 @@ public class ItemController {
 		System.out.print("\nDigite o número do pedido: ");
 		int codigo = input.nextInt();
 		input.nextLine();
-		List<Item> itens = ItemDAO.selectItensByPedido(codigo);
+		//TODO: implementar essa busca na DAO
+		List<Item> itens = new ArrayList<>(); //= daoItem.selectById(codigo);
 		if(itens.isEmpty()) {
 			System.out.println("Não há itens nesse pedido.");
 		} else {
