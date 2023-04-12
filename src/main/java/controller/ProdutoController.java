@@ -3,7 +3,6 @@ package controller;
 import dao.DAO;
 import model.Produto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ public class ProdutoController {
 
 	public static void main(String[] args) {
 		
-		int opcao = 0;
+		int opcao;
 		do {
 			System.out.print("\n\"-------  MENU PRODUTO -------\"");
 			System.out.print(
@@ -70,7 +69,7 @@ public class ProdutoController {
 	//opção 2
 	private static void atualizar() {
 		System.out.println("\n++++++ Alterar um Produto ++++++");
-		Produto produto = null;
+		Produto produto;
         int opcao = 0;
         do{
             System.out.print("\nDigite o código do produto (Zero p/sair): ");
@@ -149,7 +148,6 @@ public class ProdutoController {
         System.out.print("Digite o nome do produto: ");
         String nome = input.next();
         System.out.println("Chave de pesquisa: " + nome);
-        //TODO: implementar esse select
         List<Produto> produtos = daoProduto.selectByName(nome);
         if(produtos.isEmpty()){
             System.out.println("Não há registros correspondentes para: " + nome);
@@ -164,17 +162,15 @@ public class ProdutoController {
         int situacao = input.nextInt();
         input.nextLine();
         List<Produto> produtos;
-        switch(situacao) {
-        	case 0:
-                //TODO: implementar isso
-        		produtos = new ArrayList<>(); //ProdutoDAO.selectProdutosBySituacao(false);
-        		System.out.println("Produtos na situação INATIVO:\n " + produtos);
-        		break;
-        	case 1:
-                //TODO: implementar isso
-        		produtos = new ArrayList<>();//ProdutoDAO.selectProdutosBySituacao(true);
-        		System.out.println("Produtos na situação ATIVO:\n " + produtos);
-        		break;	
+        switch (situacao) {
+            case 0 -> {
+                produtos = daoProduto.selectBySituacao(false);
+                System.out.println("Produtos na situação INATIVO:\n " + produtos);
+            }
+            case 1 -> {
+                produtos = daoProduto.selectBySituacao(true);
+                System.out.println("Produtos na situação ATIVO:\n " + produtos);
+            }
         }
     }
 

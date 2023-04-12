@@ -60,6 +60,12 @@ public class  DAO<E> {
             .getResultList();
     }
 
+    public List selectBySituacao(boolean situacao){
+        return em.createNamedQuery(entidade.getSimpleName() + ".buscarPelaSituacao")
+            .setParameter("situacao", situacao)
+            .getResultList();
+    }
+
     public List selectPedidosByCliente(Object id){
         return em.createNamedQuery(entidade.getSimpleName() + ".buscarPedidos")
             .setParameter("id", id)
