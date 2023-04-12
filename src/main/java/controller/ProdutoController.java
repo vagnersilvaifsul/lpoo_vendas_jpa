@@ -21,11 +21,12 @@ public class ProdutoController {
 
                     1. Inserir novo produto
                     2. Atualizar um produto
-                    3. Excluir um produto
-                    4. Listar todos os produtos
-                    5. Buscar produto pelo código
-                    6. Buscar produtos pelo nome
-                    7. Buscar produtos pela situação
+                    3. Excluir um produto (tornar inativo)
+                    4. Ativar um produto
+                    5. Listar todos os produtos
+                    6. Buscar produto pelo código
+                    7. Buscar produtos pelo nome
+                    8. Buscar produtos pela situação
                     Opção (Zero p/sair):\s""");
             opcao = input.nextInt();
             input.nextLine();
@@ -33,10 +34,11 @@ public class ProdutoController {
                 case 1 -> inserir();
                 case 2 -> atualizar();
                 case 3 -> excluir();
-                case 4 -> selectProdutos();
-                case 5 -> selectProdutosById();
-                case 6 -> selectProdutosByNome();
-                case 7 -> selectProdutosBySituacao();
+                case 4 -> ativar();
+                case 5 -> selectProdutos();
+                case 6 -> selectProdutosById();
+                case 7 -> selectProdutosByNome();
+                case 8 -> selectProdutosBySituacao();
                 default -> {
                     if (opcao != 0) System.out.println("Opção inválida.");
                 }
@@ -156,6 +158,44 @@ public class ProdutoController {
                             System.out.println("Produto excluído com sucesso:" + produto);
                         } else {
                             System.out.println("Erro ao tentar excluir o produto. Por favor, contate o adminstrador.");
+                        }
+                    }
+
+                }
+            } else {
+                System.out.println("Digite um código válido!!!");
+            }
+        } while (opcao != 0);
+    }
+
+    private static void ativar(){
+        System.out.println("\n++++++ Ativar um Produto ++++++");
+        Produto produto;
+        int opcao = 0;
+        do {
+            System.out.print("\nDigite o código do produto (Zero p/sair): ");
+            long codigo = input.nextLong();
+            input.nextLine();
+            if (codigo == 0) {
+                opcao = 0;
+            } else if(codigo > 0){
+                produto = daoProduto.selectById(codigo);
+                if (produto == null) {
+                    System.out.println("Código inválido.");
+                } else {
+                    System.out.println(produto);
+                    System.out.print("Ativar este produto? (0-sim/1-não) ");
+                    if (input.nextInt() == 0) {
+                        input.nextLine();
+                        System.out.print("Tem certeza disso? (0-sim/1-não) ");
+                        produto.setSituacao(true);
+                        input.nextLine();
+                        if (daoProduto.begin()
+                            .update(produto)
+                            .commit()) {
+                            System.out.println("Produto ativado com sucesso:" + produto);
+                        } else {
+                            System.out.println("Erro ao tentar ativar o produto. Por favor, contate o adminstrador.");
                         }
                     }
 
