@@ -45,6 +45,11 @@ public class  DAO<E> {
         return this;
     }
 
+    public DAO<E> update(E entidade){
+        em.merge(entidade);
+        return this;
+    }
+
     public List selectAll() {
         //return em.createQuery("from Carro").getResultList();
         return em.createNamedQuery(entidade.getSimpleName() + ".buscarTodos").getResultList();
