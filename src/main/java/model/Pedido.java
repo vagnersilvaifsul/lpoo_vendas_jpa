@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 @Table(name = "pedidos")
 @NamedQueries({
-	@NamedQuery(name="Pedido.buscarTodos", query="select p from Pedido p")
+	@NamedQuery(name="Pedido.buscarTodos", query="select p from Pedido p"),
+	@NamedQuery(name="Pedido.buscarPedidos", query = "select p from Cliente c inner join Pedido p on c.id = p.cliente.id where c.id = : id")
 })
 @Data
 @AllArgsConstructor
@@ -31,5 +32,19 @@ public class Pedido {
 	@OneToMany
 	@JoinColumn(name="pedido_id", referencedColumnName="id")
 	List<Item> itens;
-	
+
+	@Override
+	public String toString() {
+		return "\n\nPedido{" +
+			"id=" + id +
+			", formaPagamento='" + formaPagamento + '\'' +
+			", estado='" + estado + '\'' +
+			", dataCriacao=" + dataCriacao +
+			", dataModificacao=" + dataModificacao +
+			", totalPedido=" + totalPedido +
+			", situacao=" + situacao +
+			", cliente=" + cliente +
+			", itens=" + itens +
+			'}';
+	}
 }

@@ -23,4 +23,16 @@ public class Produto {
 	private Double valor;
 	private Integer estoque;
 	private Boolean situacao;
+
+	@Override
+	public String toString() {
+		return "\nProduto{" +
+			"id=" + id +
+			", nome='" + nome + '\'' +
+			", descricao='" + descricao + '\'' +
+			", valor=" + valor +
+			", estoque=" + estoque +
+			", situacao=" + situacao +
+			'}';
+	}
 }

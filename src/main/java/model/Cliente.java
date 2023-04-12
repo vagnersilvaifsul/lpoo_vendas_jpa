@@ -27,4 +27,14 @@ public class Cliente {
 //	@JoinColumn(name="cliente_id", referencedColumnName="id")
 //	List<Pedido> pedidos;
 
+
+	@Override
+	public String toString() {
+		return "\nCliente{" +
+			"id=" + id +
+			", nome='" + nome + '\'' +
+			", sobrenome='" + sobrenome + '\'' +
+			", situacao=" + situacao +
+			'}';
+	}
 }

@@ -3,7 +3,6 @@ package controller;
 import dao.DAO;
 import model.Cliente;
 import model.Pedido;
-import model.Produto;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,7 +14,7 @@ public class PedidoController {
     private static final DAO<Pedido> daoPedido = new DAO<>(Pedido.class);
 	
     public static void main(String[] args) {
-        int opcao = 0;
+        int opcao;
         do{
             System.out.println("\n\n******** Pedidos ********");
             System.out.print(
@@ -31,31 +30,12 @@ public class PedidoController {
             );
             opcao = input.nextInt();
             input.nextLine();
-            switch (opcao){
-                case 1:
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 2:
-                    System.out.println("em desenvolvimento " + opcao);
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 3:
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 4:
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 5:
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 6:
-                    System.out.println("em desenvolvimento " + opcao);
-                    break;
-                case 7:
-                    selectPedidosByIdCliente();
-                    break;
-                default:
-                    if(opcao != 0) System.out.println("Opção inválida.");
+            switch (opcao) {
+                case 1, 2, 3, 4, 5, 6 -> System.out.println("em desenvolvimento " + opcao);
+                case 7 -> selectPedidosByIdCliente();
+                default -> {
+                    if (opcao != 0) System.out.println("Opção inválida.");
+                }
             }
         }while (opcao != 0);
     }

@@ -30,4 +30,14 @@ public class Item {
 		this.produto = produto;
 	}
 
+	@Override
+	public String toString() {
+		return "\nItem{" +
+			"id=" + id +
+			", quantidade=" + quantidade +
+			", totalItem=" + totalItem +
+			", situacao=" + situacao +
+			", produto=" + produto +
+			'}';
+	}
 }

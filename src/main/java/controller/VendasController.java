@@ -71,22 +71,20 @@ public class VendasController {
                         }
                     }
                 }while(sair != 2);
-                if(!itens.isEmpty()){ //se tem itens no carrinho
+                if (itens.isEmpty()) {
+                    System.out.println("\n******* Seu carrinho está VAZIO*******");
+                } else { //se tem itens no carrinho
                     System.out.println("\n******* Seu carrinho *******");
                     totalPedido = 0.0;
                     itens.forEach( i -> { //firula para alinhar as colunas na impressão do carrinho
-                        String nome = i.getProduto().getNome();
-                        String precoUnitario = NumberFormat.getCurrencyInstance().format(i.getProduto().getValor());
+                        StringBuilder nome = new StringBuilder(i.getProduto().getNome());
+                        StringBuilder precoUnitario = new StringBuilder(NumberFormat.getCurrencyInstance().format(i.getProduto().getValor()));
                         int MAX = 20;
                         if(nome.length() <= MAX){
-                            for (int j = nome.length(); j < MAX; j++) {
-                                nome += " ";
-                            }
+                            nome.append(" ".repeat(Math.max(0, MAX - nome.length())));
                         }
                         if(precoUnitario.length() <= MAX){
-                            for (int j = precoUnitario.length(); j < MAX-5; j++) {
-                                precoUnitario += " ";
-                            }
+                            precoUnitario.append(" ".repeat(Math.max(0, MAX - 5 - precoUnitario.length())));
                         } //fim da firula
                         System.out.println(
                                 "\tProduto: " + nome +
@@ -126,9 +124,7 @@ public class VendasController {
                         if(opcao == 1){
                             System.out.println("Pedido cancelado.");
                             //volta o estoque que foi baixado na venda
-                            itens.forEach((i) -> {
-                                voltarEstoque(i);
-                            });
+                            itens.forEach(VendasController::voltarEstoque);
                         }
                     }
                     opcao = 0;
