@@ -17,38 +17,29 @@ public class ProdutoController {
 		int opcao = 0;
 		do {
 			System.out.print("\n\"-------  MENU PRODUTO -------\"");
-			System.out.print(		
-				"\n1. Inserir novo produto" +
-				"\n2. Atualizar um produto" +
-				"\n3. Listar todos os produtos" +
-				"\n4. Buscar produto pelo código" +
-				"\n5. Buscar produtos pelo nome" +
-				"\n6. Buscar produtos pela situação" +
-				"\nOpção (Zero p/sair): ");
+			System.out.print(
+                """
+
+                    1. Inserir novo produto
+                    2. Atualizar um produto
+                    3. Listar todos os produtos
+                    4. Buscar produto pelo código
+                    5. Buscar produtos pelo nome
+                    6. Buscar produtos pela situação
+                    Opção (Zero p/sair):\s""");
 			opcao = input.nextInt();
 			input.nextLine();
-			switch(opcao) {
-				case 1:
-					inserir();
-					break;
-				case 2:
-					atualizar();
-					break;
-				case 3:
-					selectProdutos();
-					break;
-				case 4:
-					selectProdutosById();
-					break;
-				case 5:
-					selectProdutosByNome();
-					break;
-				case 6:
-					selectProdutosBySituacao();
-					break;
-				default:
-					if(opcao != 0) System.out.println("Opção inválida.");
-			}
+            switch (opcao) {
+                case 1 -> inserir();
+                case 2 -> atualizar();
+                case 3 -> selectProdutos();
+                case 4 -> selectProdutosById();
+                case 5 -> selectProdutosByNome();
+                case 6 -> selectProdutosBySituacao();
+                default -> {
+                    if (opcao != 0) System.out.println("Opção inválida.");
+                }
+            }
 		} while(opcao != 0) ;	
 	}
 	
@@ -159,7 +150,7 @@ public class ProdutoController {
         String nome = input.next();
         System.out.println("Chave de pesquisa: " + nome);
         //TODO: implementar esse select
-        List<Produto> produtos = new ArrayList<>(); //daoProduto.selectProdutosByName(nome);
+        List<Produto> produtos = daoProduto.selectByName(nome);
         if(produtos.isEmpty()){
             System.out.println("Não há registros correspondentes para: " + nome);
         }else{

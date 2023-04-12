@@ -54,6 +54,12 @@ public class  DAO<E> {
         return em.find(entidade, id);
     }
 
+    public List selectByName(String nome){
+        return em.createNamedQuery(entidade.getSimpleName() + ".buscarPeloNome")
+            .setParameter("nome", nome + "%")
+            .getResultList();
+    }
+
     public List selectPedidosByCliente(Object id){
         return em.createNamedQuery(entidade.getSimpleName() + ".buscarPedidos")
             .setParameter("id", id)

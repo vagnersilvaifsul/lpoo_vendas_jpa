@@ -8,7 +8,7 @@ public class HomeController {
 
 	public static void main(String[] args) {
 		
-		int opcao = 0;
+		int opcao;
 		do {
 			System.out.print("\n-------  Home -------");
 			System.out.print(
@@ -22,24 +22,15 @@ public class HomeController {
 					Opção (Zero p/sair):\s""");
 			opcao = input.nextInt();
 			input.nextLine();
-			switch(opcao) {
-				case 1:
-					VendasController.main(null);
-					break;
-				case 2:
-                    ProdutoController.main(null);
-					break;
-				case 3:
-					ClienteController.main(null);
-					break;
-				case 4:
-					System.out.println("Em implementação.");
-					break;
-				case 5:
-					PedidoController.main(null);
-					break;	
-				default:
-					if(opcao != 0) System.out.println("Opção inválida.");
+			switch (opcao) {
+				case 1 -> VendasController.main(null);
+				case 2 -> ProdutoController.main(null);
+				case 3 -> ClienteController.main(null);
+				case 4 -> System.out.println("Em implementação.");
+				case 5 -> PedidoController.main(null);
+				default -> {
+					if (opcao != 0) System.out.println("Opção inválida.");
+				}
 			}
 		} while(opcao != 0) ;
 		System.out.println("\n\n!!!!!!!! Fim da aplicação !!!!!!!!");

@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "produtos")
 @NamedQueries({
-	@NamedQuery(name="Produto.buscarTodos", query="select p from Produto p")
+	@NamedQuery(name="Produto.buscarTodos", query="select p from Produto p"),
+	@NamedQuery(name="Produto.buscarPeloNome", query="select p from Produto p where p.nome like :nome") //TODO: fazer essa query
 })
 @Data
 @AllArgsConstructor
