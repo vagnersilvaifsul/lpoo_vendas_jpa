@@ -136,14 +136,24 @@ public class VendasController {
     private static void baixarEstoque(Item item){
         Produto produto = item.getProduto();
         produto.setEstoque(produto.getEstoque() - item.getQuantidade());
-        //TODO: implementar a baixa do estoque
-        //ProdutoDAO.updateProduto(produto);
+        if (daoProduto.begin()
+            .update(produto)
+            .commit()) {
+            System.out.println("estoque atualizado:" + produto);
+        } else {
+            System.out.println("Erro ao tentar atualizar o estoque. Por favor, contate o adminstrador.");
+        }
     }
 
     private static void voltarEstoque(Item item){
         Produto produto = item.getProduto();
         produto.setEstoque(produto.getEstoque() + item.getQuantidade());
-        //TODO: implementar o rollback do estoque
-        //ProdutoDAO.updateProduto(produto);
+        if (daoProduto.begin()
+            .update(produto)
+            .commit()) {
+            System.out.println("estoque estornado:" + produto);
+        } else {
+            System.out.println("Erro ao tentar estornar o estoque. Por favor, contate o adminstrador.");
+        }
     }
 }
