@@ -26,7 +26,7 @@ public class HomeController {
 				case 1 -> VendasController.main(null);
 				case 2 -> ProdutoController.main(null);
 				case 3 -> ClienteController.main(null);
-				case 4 -> System.out.println("Em implementação.");
+				case 4 -> ItemController.main(null);
 				case 5 -> PedidoController.main(null);
 				default -> {
 					if (opcao != 0) System.out.println("Opção inválida.");

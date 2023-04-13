@@ -71,8 +71,8 @@ public class  DAO<E> {
             .getResultList();
     }
 
-    public List selectPedidosByCliente(Object id){
-        return em.createNamedQuery(entidade.getSimpleName() + ".buscarPedidos")
+    public List selectResultSetById(Object id){
+        return em.createNamedQuery(entidade.getSimpleName() + ".buscarResultSetById")
             .setParameter("id", id)
             .getResultList();
     }

@@ -49,7 +49,7 @@ public class PedidoController {
         	System.out.println("Codigo inexistente.");
         }else {
         	System.out.println("\nCliente Pesquisado: " + cliente);
-        	List<Pedido> pedidos = daoPedido.selectPedidosByCliente(cliente.getId());
+        	List<Pedido> pedidos = daoPedido.selectResultSetById(cliente.getId());
         	if(pedidos.isEmpty()) {
         		System.out.println("Não há pedidos para cliente " + cliente.getNome());
         	}else {

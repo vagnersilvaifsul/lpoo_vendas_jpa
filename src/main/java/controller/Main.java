@@ -2,11 +2,7 @@ package controller;
 
 import dao.DAO;
 import model.Cliente;
-import model.Item;
 import model.Pedido;
-import model.Produto;
-
-import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,7 +25,7 @@ public class Main {
         System.out.println(daoPedido.selectById(25L));
 
         DAO<Cliente> daoCliente = new DAO<>(Cliente.class);
-        System.out.println(daoCliente.selectPedidosByCliente(2L));
+        System.out.println(daoCliente.selectResultSetById(2L));
 
         //isso cria a base de dados no SGBD utilizando o Hybernate (JPA)
 //        Cliente cliente1 = new Cliente(1L, "Ana", "Silva", true);

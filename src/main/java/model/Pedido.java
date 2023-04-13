@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "pedidos")
 @NamedQueries({
 	@NamedQuery(name="Pedido.buscarTodos", query="select p from Pedido p"),
-	@NamedQuery(name="Pedido.buscarPedidos", query = "select p from Cliente c inner join Pedido p on c.id = p.cliente.id where c.id = : id")
+	@NamedQuery(name="Pedido.buscarResultSetById", query = "select p from Cliente c inner join Pedido p on c.id = p.cliente.id where c.id = : id")
 })
 @Data
 @AllArgsConstructor

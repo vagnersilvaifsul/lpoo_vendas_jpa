@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "itens")
 @NamedQueries({
-	@NamedQuery(name="Item.buscarTodos", query="select i from Item i")
+	@NamedQuery(name="Item.buscarTodos", query="select i from Item i"),
+	@NamedQuery(name="Item.buscarResultSetById", query = "select i from Item i where i.pedido.id = : id")
 })
 @Data
 @AllArgsConstructor
