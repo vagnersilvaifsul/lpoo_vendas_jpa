@@ -102,7 +102,7 @@ public class VendasController {
                         //salva o pedido
                         Pedido pedido = new Pedido(null, "visa débito", "aberto", LocalDate.now(), LocalDate.now(), totalPedido, true, cliente, null);
                         if(daoPedido.begin()
-                            .create(pedido)
+                            .insert(pedido)
                             .commit()){
                             System.out.println("Pedido salvo.");
                             System.out.println(pedido.getId());
@@ -110,7 +110,7 @@ public class VendasController {
                                 itens.forEach(i -> {
                                     i.setPedido(pedido);
                                     daoItem.begin()
-                                        .create(i)
+                                        .insert(i)
                                         .commit();
                                 });
                             }

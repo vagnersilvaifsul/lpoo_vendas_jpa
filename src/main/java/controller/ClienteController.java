@@ -18,37 +18,28 @@ public class ClienteController {
 		do {
 			System.out.print("\n\"-------  MENU cliente -------\"");
 			System.out.print(
-					"\n1. Inserir novo cliente" + 
-					"\n2. Atualizar um cliente" +
-					"\n3. Listar todos os clientes" + 
-					"\n4. Buscar cliente pelo código" + 
-					"\n5. Buscar clientes pelo nome"
-					+ "\n6. Buscar clientes pela situação" + 
-					"\nOpção (Zero p/sair): ");
+				"""
+
+					1. Inserir novo cliente
+					2. Atualizar um cliente
+					3. Listar todos os clientes
+					4. Buscar cliente pelo código
+					5. Buscar clientes pelo nome
+					6. Buscar clientes pela situação
+					Opção (Zero p/sair):\s""");
 			opcao = input.nextInt();
 			input.nextLine();
 			switch (opcao) {
-			case 1:
-				inserir();
-				break;
-			case 2:
-				atualizar();
-				break;
-			case 3:
-				selectClientes();
-				break;
-			case 4:
-				selectClientesById();
-				break;
-			case 5:
-				selectClientesByNome();
-				break;
-			case 6:
-				selectClientesBySituacao();
-				break;
-			default:
-				if (opcao != 0)
-					System.out.println("Opção inválida.");
+				case 1 -> inserir();
+				case 2 -> atualizar();
+				case 3 -> selectClientes();
+				case 4 -> selectClientesById();
+				case 5 -> selectClientesByNome();
+				case 6 -> selectClientesBySituacao();
+				default -> {
+					if (opcao != 0)
+						System.out.println("Opção inválida.");
+				}
 			}
 		} while (opcao != 0);
 
@@ -65,7 +56,7 @@ public class ClienteController {
         cliente.setSituacao(true);
         
         if(daoCliente.begin()
-			.create(cliente)
+			.insert(cliente)
 			.commit()) {
         	System.out.println("\nCliente salvo com sucesso.");
         }else {

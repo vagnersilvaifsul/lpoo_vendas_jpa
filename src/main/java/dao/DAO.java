@@ -40,7 +40,7 @@ public class  DAO<E> {
         }
     }
 
-    public DAO<E> create(E entidade) {
+    public DAO<E> insert(E entidade) {
         em.persist(entidade);
         return this;
     }

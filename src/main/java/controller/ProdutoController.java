@@ -62,7 +62,7 @@ public class ProdutoController {
         input.nextLine(); //limpa o input
         produto.setSituacao(true);
         if (daoProduto.begin()
-            .create(produto)
+            .insert(produto)
             .commit()) {
             System.out.println("\nProduto salvo com sucesso.");
         } else {
