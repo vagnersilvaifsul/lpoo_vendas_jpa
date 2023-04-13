@@ -10,7 +10,9 @@ import javax.persistence.*;
 @Table(name = "clientes")
 @NamedQueries({
 	@NamedQuery(name="Cliente.buscarTodos", query="select c from Cliente c"),
-	@NamedQuery(name="Cliente.buscarPedidos", query = "select p from Cliente c inner join Pedido p on c.id = p.cliente.id where c.id = : id")
+	@NamedQuery(name="Cliente.buscarPedidos", query = "select p from Cliente c inner join Pedido p on c.id = p.cliente.id where c.id = : id"),
+	@NamedQuery(name="Cliente.buscarPeloNome", query="select c from Cliente c where c.nome like :nome"),
+	@NamedQuery(name="Cliente.buscarPelaSituacao", query="select c from Cliente c where c.situacao = :situacao")
 })
 @Data
 @AllArgsConstructor
