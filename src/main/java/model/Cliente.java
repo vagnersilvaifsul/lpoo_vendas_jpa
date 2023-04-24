@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -24,10 +25,8 @@ public class Cliente {
 	private String nome;
 	private String sobrenome;
 	private Boolean situacao;
-
-//	@OneToMany
-//	@JoinColumn(name="cliente_id", referencedColumnName="id")
-//	List<Pedido> pedidos;
+	@OneToMany(mappedBy = "cliente")
+	List<Pedido> pedidos;
 
 
 	@Override

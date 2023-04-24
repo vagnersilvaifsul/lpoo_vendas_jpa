@@ -23,9 +23,12 @@ public class Item {
 	private Double totalItem;
 	private Boolean situacao;
 	@ManyToOne
+	@JoinColumn(name = "produto_id", referencedColumnName = "id")
 	private Produto produto;
 	@ManyToOne
+	@JoinColumn(name = "pedido_id", referencedColumnName = "id")
 	private Pedido pedido;
+
 
 	public Item(Produto produto){
 		this.produto = produto;

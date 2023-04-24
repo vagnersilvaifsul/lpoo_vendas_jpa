@@ -28,9 +28,9 @@ public class Pedido {
 	private Double totalPedido;
 	private Boolean situacao;
 	@ManyToOne
+	@JoinColumn(name = "cliente_id", referencedColumnName = "id")
 	private Cliente cliente;
-	@OneToMany
-	@JoinColumn(name="pedido_id", referencedColumnName="id")
+	@OneToMany(mappedBy = "pedido")
 	List<Item> itens;
 
 	@Override
