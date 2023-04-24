@@ -9,7 +9,7 @@ public class  DAO<E> {
 
     private static final EntityManagerFactory emf;
     private final EntityManager em;
-    private Class<E> entidade;
+    private final Class<E> entidade;
 
     static {
         try {
