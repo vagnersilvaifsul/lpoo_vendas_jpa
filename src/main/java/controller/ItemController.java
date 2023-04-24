@@ -20,7 +20,7 @@ public class ItemController {
 
 					1. Listar os itens pelo código do pedido
 					2. Excluir um item do pedido
-					3. Ativar um produto
+					3. Ativar um item
 					Opção (Zero p/sair):\s""");
 			opcao = input.nextInt();
 			input.nextLine();

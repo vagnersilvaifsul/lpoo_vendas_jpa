@@ -71,6 +71,36 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.HomeController">
+    <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
+      <option name="appName" />
+      <option name="appServicePlanName" />
+      <option name="appServicePlanResourceGroup" />
+      <option name="appSettingsKey" value="ab856bfe-c03f-4051-a8aa-60f29a3d8164" />
+      <option name="artifact" />
+      <option name="debugOptions" />
+      <option name="deployment" />
+      <option name="deploymentStagingDirectoryPath" />
+      <option name="funcPath" />
+      <option name="functionHostArguments" />
+      <option name="hostJsonPath" />
+      <option name="insightsName" />
+      <option name="instrumentationKey" />
+      <option name="javaVersion" />
+      <option name="localSettingsJsonPath" />
+      <option name="moduleName" />
+      <option name="os" />
+      <option name="pricingTier" />
+      <option name="providerMap">
+        <map />
+      </option>
+      <option name="region" />
+      <option name="resourceGroup" />
+      <option name="stagingFolder" />
+      <option name="subscription" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HomeController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.HomeController" />
       <module name="lpoo_vendas_jpa" />
@@ -118,6 +148,7 @@
       <workItem from="1680787972128" duration="18960000" />
       <workItem from="1681329612047" duration="10322000" />
       <workItem from="1681390744752" duration="4484000" />
+      <workItem from="1682342349297" duration="921000" />
     </task>
     <servers />
   </component>
