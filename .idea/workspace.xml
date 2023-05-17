@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc4c23f-42da-44a2-b099-998c3c7474c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/carros.gjl8rg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/carros_test.L2WGJg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/cliente_conta.6jxtPA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/produtos.mhAsxA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/produtos_aulas.BdEJ0Q.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/produtos_teste.LmYO0g.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/tads_aulas.p5JB3g.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/tads_b.n0B4yw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/teste_sgbd.QhSLhA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d/storage_v2/_src_/schema/vendas.l6Mezw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fe5d51a5-c4be-4f98-9398-3b04da22764d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1fc4c23f-42da-44a2-b099-998c3c7474c0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,7 +156,7 @@
       <workItem from="1682529664823" duration="85000" />
       <workItem from="1682596892418" duration="954000" />
       <workItem from="1682597883357" duration="372000" />
-      <workItem from="1682966127022" duration="2328000" />
+      <workItem from="1682966127022" duration="2679000" />
     </task>
     <servers />
   </component>
